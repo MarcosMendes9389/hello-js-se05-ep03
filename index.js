@@ -7,8 +7,6 @@ const baseURL = "https://api.github.com"
 
 const api = axios.create({ baseURL })
 
-//const params = "MarcosMendes9389"
-
 app.get("/seguidores/:user", (req,res) => {
 
 api.get(`/users/${ req.params.user }/followers`)
