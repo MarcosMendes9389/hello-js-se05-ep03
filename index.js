@@ -1,10 +1,20 @@
 // index.js
+const axios = require("axios")
 const express = require("express")
 const app = express()
 
-app.get("/hello/:id1/:id2", (req, res) => {
-  console.log(req.params)
-  res.send(`Hello, ${req.query.name}!!!, id=${req.params.id}`)
+const baseURL = "https://api.github.com"
+
+const api = axios.create({ baseURL })
+
+//const params = "MarcosMendes9389"
+
+app.get("/seguidores/:user", (req,res) => {
+
+api.get(`/users/${ req.params }/followers`)
+    .then(ret =>res.send(ret.data))
+    .catch(err => res.status(500).send(err.response.data))
+
 })
 
 app.listen(3000)
