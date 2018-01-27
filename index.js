@@ -11,7 +11,7 @@ const api = axios.create({ baseURL })
 
 app.get("/seguidores/:user", (req,res) => {
 
-api.get(`/users/${ req.params }/followers`)
+api.get(`/users/${ req.params.user }/followers`)
     .then(ret =>res.send(ret.data))
     .catch(err => res.status(500).send(err.response.data))
 
